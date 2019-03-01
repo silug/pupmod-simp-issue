@@ -1,6 +1,19 @@
 ---
 version: 2.0.0
 checks:
+  oval:com.puppet.forge.simp.issue.profile.el6:
+    settings:
+      parameter: issue::profile
+      value: default
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:AC-8: true
+    identifiers:
+      nist_800_53_rev4:
+      - AC-8
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '6'
   oval:com.puppet.forge.simp.issue.profile:
     settings:
       parameter: issue::profile
@@ -23,6 +36,7 @@ checks:
       operatingsystemmajrelease: '7'
     oval-ids:
     - xccdf_org:ssgproject:content_rule_banner_etc_issue
+    - banner_etc_issue
   oval:com.puppet.forge.simp.issue.profile.nist_800_53_rev4:
     settings:
       parameter: issue::profile
@@ -33,3 +47,6 @@ checks:
     identifiers:
       nist_800_53_rev4:
       - AC-8
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
